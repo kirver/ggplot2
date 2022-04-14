@@ -3,6 +3,8 @@ Repo to accompany the R ggplot2 workshop from Jasper Ridge data management &amp;
 
 The workshop assumes _some_ knowledge of R (e.g. setting working directories, loading libraries, etc;), but we can work on it together if not! 
 
+Please see the accompanying powerpoint for more details!
+
 ---
 
 We will be walking through the R code here!
@@ -33,3 +35,9 @@ To make the dataset more manageable, we will use the ```subset()``` function to 
 ```p<-subset(p, Generation =="1")```
 
 Note: let's say you wanted to use all generations _except_ generation 5. Then, what you would use instead would be ```subset(p, Generation != "5")```. 
+
+
+ggplot2 was made following the Grammar of Graphics, a textbook by Leland Wilkinson. A grammar of graphics is a framework which follows a layered approach to describe & construct visualizations or graphics in a structured manner. Hadley Wickham et al wrote ![a book](https://ggplot2-book.org/) describing their incorporation of the Grammar of Graphics into the ggplot2 package. 
+
+
+Take a look at the `p` dataset by Ctrl+Enter on the given line. You should see columns such as **Name, Type.1, Total, HP, Attack**, etc;. Each row corresponds to a given Pokemon 'species'. 
