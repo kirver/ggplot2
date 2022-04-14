@@ -18,6 +18,8 @@ library("gridExtra")
 
 Now, we will load in the Pokemon dataset. 
 
+(Pikachu.png)
+
 ```
 p <- read.csv("pokemon.csv")
 #This puts the .csv into a list titled 'p'
