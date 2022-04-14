@@ -1,6 +1,7 @@
 # GGPLOT2 Workshop
 Repo to accompany the R ggplot2 workshop from Jasper Ridge data management &amp; publishing series, organized by Dr. Bryan Juarez. This module is led by (future Dr.) Kirsten Verster.
 
+The workshop assumes _some_ knowledge of R (e.g. setting working directories, loading libraries, etc;), but we can work on it together if not! 
 
 ---
 
@@ -16,9 +17,11 @@ library("ggplot2")
 library("gridExtra")
 ```
 
-Now, we will load in the Pokemon dataset. 
+Now, we will load in the Pokemon dataset. This dataset was taken from [The Complete Pokemon Dataset](https://www.kaggle.com/datasets/rounakbanik/pokemon), which contains information on all 802 Pokemon from 7 Generations. _Neeeeerddd._ The datset is titled **Pokemon.csv** and can also be downloaded from the GitHub. 
 
-(Pikachu.png)
+For those who are young and/or had friends growing up, Pokemon is a Japanese media franchise based on "pocket monsters" that you can train, befriend, coexist with. There are a lot of them, and there is a *passionate* culture centered around them. 
+
+![Pikachu](Pikachu.png)
 
 ```
 p <- read.csv("pokemon.csv")
