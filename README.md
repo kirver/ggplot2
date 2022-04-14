@@ -20,7 +20,8 @@ Now, we will load in the Pokemon dataset.
 
 ```
 p <- read.csv("pokemon.csv")
-#This puts the .csv into a list titled 'p'```
+#This puts the .csv into a list titled 'p'
+```
 
 To make the dataset more manageable, we will use the ```subset()``` function to only extract one generation (the first one, which is the best, obviously!). The syntax is ```subset(list, Column == "Desired_String")```.
 
