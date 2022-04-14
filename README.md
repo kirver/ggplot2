@@ -6,10 +6,11 @@ Repo to accompany the ggplot2 workshop from Jasper Ridge data management &amp; p
 We will be walking through the code here!
 
 ```
-#Set the working directory to wherever your file is located, and load in the following packages (which should already be pre-installed):
+#Set the working directory to wherever your file is located, 
+and load in the following packages (which should already be pre-installed):
+
 setwd(C:/Path/to/file)
 library("tidyverse")
 library("ggplot2")
 library("gridExtra")
-
 ```
