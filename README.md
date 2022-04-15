@@ -210,7 +210,7 @@ This graph is kind of unwieldy af because the text is all over the place. Howeve
  
  Now try the same with geom_label(). What is the major difference between these? 
  
- [[pp12]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp12.png)
  
  ### To Test Your Knowledge
  
@@ -231,7 +231,7 @@ A histogram is a _counter_. It counts how many of something can be found given a
 `ggplot(p, aes(x=HP)) + geom_histogram() `
 
        
-      [[pp13]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp13.png)
       
       [[[[Add in something about layered histograms???]]]
       
