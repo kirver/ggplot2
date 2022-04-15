@@ -182,4 +182,45 @@ NOW! If you want to add that model, that _layer_, to the graph, you add on anoth
   
   More information about the `geom_smooth()` function can be found [here](https://ggplot2.tidyverse.org/reference/geom_smooth.html). 
   
-  
+## Adding Text to Scatterplots
+
+This may not be that useful, but I'll share it anyways. Personally, I'm really into Pokemon (ndur), and I love messing around with these graphs to see what they tell me about them. One thing that could be useful is by adding _text_ to these scatterplots. Turns out there is a function for this! They are `geom_text()` and `geom_label()`. 
+
+[Text geoms](https://ggplot2.tidyverse.org/reference/geom_text.html) are useful for labeling plots. They can be used by themselves as scatterplots or in combination with other geoms, for example, for labeling points or for annotating the height of bars. geom_text() adds only text to the plot. geom_label() draws a rectangle behind the text, making it easier to read.
+
+Let's look at a few examples of the usage, subsetting only Legendary pokemon to make the graphs more manageable to work with:
+
+`p <- read.csv("pokemon.csv")`
+
+`lgd1 <- subset(p, Legendary ==TRUE)`
+
+`lgd2 <- ggplot(lgd1) + aes(Attack, Defense,
+                           color=Type.1)`
+
+Now, the ggplot object `lgd2` contains legendary Pokemon with Attack, Defense, and colored by Type.1. Now we will add `geom-text()`, with the modifier `label=lgd1$Name` which tells us that the actual _label_ we want to display is the _name_ of the Pokemon:
+
+`lgd2 +  geom_text(label = lgd1$Name)`
+                           
+This graph is kind of unwieldy af because the text is all over the place. However, we can make a few modifications to make it more manageable: 1) we use the check_overlap function, which will keep text from overlapping. Then, we can change the size of the text:
+
+`lgd2 +   geom_text(label = lgd1$Name,
+                   check_overlap=TRUE,
+                   size=2)`
+                   
+ [pp12]
+ 
+ Now try the same with geom_label(). What is the major difference between these? 
+ 
+ ### To Test Your Knowledge
+ 
+1. Of all the Pokemon in generation 2, which is the fastest?
+2. of all the legendary Pokemon in generations EXCLUDING the first, which has the highest HP? 
+3. Is there a statistically significant association between HP and speed for all Pokemon in generation 4? 
+4. What are a few types of geoms? What are the ways of using them to show information? 
+
+`
+`
+`
+`
+`
+`
