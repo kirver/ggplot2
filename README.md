@@ -5,6 +5,8 @@ The workshop assumes _some_ knowledge of R (e.g. setting working directories, lo
 
 Please see the accompanying powerpoint for more details!
 
+We begin with a .csv file and create several manipulations in order to learn the basic functions of ggplot2 using a Pokemon-based dataset. 
+
 ---
 
 ## Beginning!
@@ -62,7 +64,11 @@ The `ggplot()` function establishes that a plot needs to be made. It 'initialize
 
 What you need to do is load in the _aesthetics_, which is called by `aes()`. And _then_ the layers, scales, coords and facets are added with `+`. Let's see this!
 
+## All Aes() on Me
+
 The way `aes()` works is by describing how data variables are mapped to the visual properties, or aesthetics, of the geoms (the geoms, remember, are the 0, 1 or 2 dimensional graphic representations of the data point!). It is used in the following way: `aes(x, y, ...)`. 
+
+There are _lots_ of ways to call aes(). Several can be read about [here](https://bookdown.org/yih_huynh/Guide-to-R-Book/basic-aesthetics.html). We are going to run through a few of the most common iterations via using a scatterplot example. 
 
 In our case, let's think of two items we want to map onto a scatter plot. Let's say, mmm, Attack and Defense. The we run the following:
 
@@ -79,3 +85,30 @@ How do we represent the data? Since we are interested in making a scatterplot, w
 So, we will _add_ the geom point aesthetic to these points by running the following code:
 
 `ggplot(p) + aes(Attack, Defense) + geom_point()`
+
+[pp3]
+
+So far we have representations of two variables: Attack, and Defense. What if we wanted to add in a third variable? We can choose to represent a third variable by changing the _color_ of each point. We do this by manipulating the `aes()` function further and specifying the 'color' variable, as so:
+
+`ggplot(p) + aes(Attack, Defense, color=HP) + geom_point()`
+
+[pp4]
+
+Keep in mind that this is assigning a quantitative variable color to each point, so you will see a quantitative color scale. However, you can also do the same with discrete variables, such as Type.1:
+
+`ggplot(p) + aes(Attack, Defense, color=Type.1) + geom_point()`
+
+[[pp6]
+
+So far we have three different variables represented: Attack, Defense, and Type.1. Dope! What if we want to go DEEPER and add another one? A fourth variable?
+
+Another way we can manipulate the graph is by changing the _size_ of each point. Again, we will manipulate the aes() function and assign a variable to this size. Let's play around and change the size depending on the Pokemon's speed!
+
+`ggplot(p) + aes(Attack, Defense, color=HP,
+                size=Speed) + geom_point()`
+                
+[pp7]
+
+Are you ready for one more variable?! A fifth one!?!? Let's change the shape of each data point. Keep in mind that shape is a discrete trait, so it can only function with discrete variables. 
+
+[pp8]
