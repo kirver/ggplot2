@@ -7,7 +7,7 @@ Please see the accompanying powerpoint for more details!
 
 ---
 
-#Beginning!
+##Beginning!
 
 ```
 #Set the working directory to wherever your file is located, 
@@ -48,4 +48,9 @@ Now, it is time to start making an actual ggplot!
 
 ---
 
+##Starting with Scatterplots
+
+Let's start by loading in a ggplot item.
+
+`ggplot(p)`
 
