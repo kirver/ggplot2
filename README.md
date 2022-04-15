@@ -149,3 +149,35 @@ Now, try out a few of these themes and see what is prettiest for you:
 
 `p1 + theme_classic()`
 
+## Fitting a Linear Regression
+
+Disclaimer: I know very little about linear regressions. But other people, such as Dr. Juarez, and [the guy who wrote this](https://sejohnston.com/2012/08/09/a-quick-and-easy-function-to-plot-lm-results-in-r/), totally do! But I will run through a basic function:
+
+Let's say I want to run a linear model for how Attack corresponds to Defense. Firstly, in order to do this, we need to work with the original .csv data frame. The `lm()` function that does this is (I believe) part of the base R package and doesn't deal with this ggplot nonsense. 
+
+So, first let's reload in the Pokemon dataset, subsetting the first generation:
+
+`p <- read.csv("pokemon.csv")`
+
+`p <- subset(p, Generation == 1)`
+
+Take a look at the graph. Do you expect a line to fit through these data?
+
+`ggplot(p) + aes(Attack, Defense) +
+  geom_point(color="darkgreen")`
+  
+  [pp10]
+  
+  We then run the `lm()` function, which [fits linear models](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm) to the data points specified, e.g. `lm(X ~ Y, data = data)`. You can then view summary statistics for the model.
+  
+  So...
+  
+  `model <- lm(Attack ~ Defense, data = p)`
+`summary(model)`
+
+NOW! If you want to add that model, that _layer_, to the graph, you add on another geom. The linear model is part of the geom called [geom_smooth()](https://ggplot2.tidyverse.org/reference/geom_smooth.html). Its usage is like so:
+
+`ggplot(p) + aes(Attack, Defense) +
+  geom_point(color="darkgreen") + geom_smooth(methods='lm')`
+  
+  More information about the `geom_smooth()` function can be found [here](https://ggplot2.tidyverse.org/reference/geom_smooth.html). 
