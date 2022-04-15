@@ -225,9 +225,8 @@ Okay, enough time with the scatterplots and continuous variables! Boo! Now we ar
 
 A histogram is a _counter_. It counts how many of something can be found given a dataset. For example, let's say we want to see the distribution of _means_ for Hit Points in a pokemon. As before, we load in the dataset. The aesthetic set up is a little bit different: instead of assigning an X and Y, we only establish an X, since we are only looking at one variable and then counting it (hence, the Y will inherently by the count). Let's plug this in as a default:
 
-```p <- read.csv("pokemon.csv")
-ggplot(p,
-       aes(x=HP)) + geom_histogram() ```
+`p <- read.csv("pokemon.csv")`
+`ggplot(p, aes(x=HP)) + geom_histogram() `
        
       [pp13]
       
@@ -235,11 +234,9 @@ ggplot(p,
 
 Run the following code:
 
-```
-ggplot(p, aes(x=HP)) + geom_histogram(binwidth=2,
+`ggplot(p, aes(x=HP)) + geom_histogram(binwidth=2,
                                    fill="blue",
-                                   color="green")
-```
+                                   color="green")`
 
 1. What do you think changing the binwidth does?
 2. What do you think changing fill does?
