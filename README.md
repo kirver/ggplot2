@@ -334,7 +334,42 @@ ggplot(p, aes(x=Legendary, y=as.factor(Generation))) + geom_count() + theme_bw()
   scale_x_discrete(labels=Legend)
   ```
  
+ Now let's say we want to arrange these plots nicely, like, for science. To this end we can use the `gridExtra()` package, which we loaded in right at the very beginning. More info on it can be found [here](https://cran.r-project.org/web/packages/egg/vignettes/Ecosystem.html). I like it since it's a little more intuitive than the base R grid function. 
  
+ First, we will make a few plots and give them each a name. Take a second to figure out what each plot is doing! 
+ 
+ ```
+ Legend <- c("Non-Legendary", "Legendary")
+p1 <- ggplot(p, aes(x=Legendary, y=as.factor(Generation))) + geom_count() + theme_bw() + 
+  ggtitle("Counts of Legendaries per Generation") + 
+  xlab("Legendary?") +
+  ylab("Generation") + scale_y_discrete(limits=rev) +
+  scale_x_discrete(labels=Legend)
+  
+p2 <- ggplot(p,
+       aes(x=Speed)) + geom_histogram(binwidth=5,
+                                      fill="blue",
+                                      color="green")
+                                      
+ p3 <- ggplot(p) + aes(Attack, Defense,
+                      color=Type.1,
+                      shape=Type.2,
+                      size=HP) +  theme_bw() +
+  geom_point() 
+  
+p <- read.csv("pokemon.csv")
+ggplot(p) + aes(Attack, Defense) +
+  geom_point(color="darkgreen")
+model <- lm(Attack ~ Defense, data = p)
+summary(model)
+p4 <- ggplot(p) + aes(Attack, Defense) +
+  geom_point(color="darkgreen") + geom_smooth(methods='lm')
+p4
+
+```
+
+Wow! This is some absolute CHAOS going on. Awesome. 
+  
  
  
   ### Grid arrange
