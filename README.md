@@ -140,6 +140,7 @@ Notice a change?
 Now, try out a few of these themes and see what is prettiest for you:
 
 `p1 + theme_light()
+
 p1 + theme_dark()
 p1 + theme_minimal()
 p1 + theme_void()
