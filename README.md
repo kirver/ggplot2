@@ -366,11 +366,23 @@ p4 <- ggplot(p) + aes(Attack, Defense) +
   geom_point(color="darkgreen") + geom_smooth(methods='lm')
 p4
 
+p5 <- ggplot(p,
+       aes(x=as.factor(Generation),
+           y=Defense,
+           color=as.factor(Generation),
+           fill=Legendary)) + geom_boxplot()
+
 ```
 
 Wow! This is some absolute CHAOS going on. Awesome. 
   
- 
+Now, each crazy ass plot is relatively different. We have five plots. We want to arrange them using the `grid.arrange()` function. The syntax is:
+
+`grid.arrange(plot1, plot2, ...,
+nrow= no_rows,
+ncol=ncols`
+
+For example, let's say we want to only 
  
   ### Grid arrange
   
