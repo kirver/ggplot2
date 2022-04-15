@@ -256,13 +256,13 @@ Boxplots are a way of examining the quantitative means between categorical varia
        aes(x=Legendary,
            y=HP)) + geom_boxplot()`
            
-   PP14
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp14.png)
    
    I mean, obviously, right? They're legendaries, you would expect the mean to be a bit higher. 
    
    Let's say you want to compare the mean Speeds of Pokemon from different generations. Try it now. Do you run into any issues?
    
-   Well, yeah, of course. The problem is that, when dealing with a numerical variable, like, generation 1, the computer doesn't know that this is actually _categorical_. We're nerds and know that generations are distinct entities, and that Gen 1 Pokemon are from Kanto while the second is Johto and so on and so forth... anyways. To address this, we can convert the numerical variables into categorical ones with the as.factor() function, like so:
+   Well, yeah, of course. The problem is that, when dealing with a numerical variable, like, generation 1, the computer doesn't know that this is actually _categorical_. We're nerds and know that generations are distinct entities, and that Gen 1 Pokemon are from Kanto while the second is Johto and so on and so forth... anyways. To address this, we can convert the numerical variables into categorical ones with the `as.factor()` function, like so:
    
    `ggplot(p,
        aes(x=as.factor(Generation),
@@ -276,12 +276,67 @@ Boxplots are a way of examining the quantitative means between categorical varia
            color=as.factor(Generation),
            fill="orange")) + geom_boxplot()`
            
- Based on the above,  what do you think color= function does in the boxplot context? What about fill?       
+ Based on the above,  what do you think `color= function` does in the boxplot context? What about fill?       
  
- Add fill=Legendary. What happens? What does this data tell you about how consistently Pokemon legendaries are stronger than non-Legendaries across generations? 
+ Add `fill=Legendary`. What happens? What does this data tell you about how consistently Pokemon legendaries are stronger than non-Legendaries across generations? What are some examples of how this type of plot could be useful? 
   
+  [[pp15]]
   
-  ### Labeling the Plots: axes, titles, etc; 
+ 
+  
+  ## Discrete vs Discrete
+  
+  This example is pretty uncommon, but I wanted to show one iteration of mapping a discrete against a discrete variable. Thus do we introduce the uncommon `geom_count()` function. A good guide to its usage can be found [here](https://ggplot2.tidyverse.org/reference/geom_count.html) and [here](https://plotly.com/ggplot2/geom_count/). 
+  
+  It's kind of like a histogram, but in two dimensions: 
+  
+  `ggplot(p, aes(x=Legendary, y=as.factor(Generation))) + geom_count()`
+  
+  [[pp16]
+  
+
+  
+  ## Plot Arrangement
+  
+  A critical part of making compelling graphs is the _presentation_. We've spent a lot of time discussing the _data_ we choose and the geoms we use to present them. 
+Now we will discuss the presentation.
+
+Clearly, one aspect of presentation is going to be the axes. Sometimes, the way we format .csv data will not be compatible with how we want data in our graphs: we use underscorse since it can't handle strings, etc;. For example, `p$Legendary` returns TRUE or FALSE, since it is [Boolean data](https://en.wikipedia.org/wiki/Boolean_data_type). 
+
+Let's consider the graph we made above, the count geom. As it stands, the axes are written as they are read in: `as.factor(Generation)` with the labels `TRUE` or `FALSE`. How can we fix this? 
+
+We can add a few different functions: `xlab()`, `ylab()`, and `ggtitle()` (which adds a general title). You _add_ these using a plus sign and it overrides the defaults.
+
+Let's try the following:
+
+```
+ ggplot(p, aes(x=Legendary, y=as.factor(Generation))) + geom_count() + theme_bw() + 
+ ggtitle("Counts of Legendaries per Generation") + 
+ xlab("Legendary?") +
+ ylab("Generation")
+```
+ [[[pp17]]]
+ 
+ However, there are still a few things I don't love about this graph. First, the fact that generations are in descending order. Then, the fact that legendary Pokemon are only indicated with FALSE or TRUE. Kind of ugly. 
+ 
+ To change the order of the y axis for this discrete variable, you add the following code: `scale_y_discrete(limits=rev)`. Details on how to reverse the scale for a continuous variable can be found [here](https://r-graphics.org/recipe-axes-reverse). 
+ 
+ What if we want to change the ticks on the axis? For example, in our case, we want to change the presentation of each legendary label so it says "Non-Legendary", etc; instead of a Boolean value. 
+ 
+ This is kind of annoying, but we need to create a list of the labels we want: `Legend <- c("Non-Legendary", "Legendary")`. Then, we add it as a discrete scale into the code using `scale_x_discrete()` function:
+ 
+ ```
+ Legend <- c("Non-Legendary", "Legendary")
+ggplot(p, aes(x=Legendary, y=as.factor(Generation))) + geom_count() + theme_bw() + 
+  ggtitle("Counts of Legendaries per Generation") + 
+  xlab("Legendary?") +
+  ylab("Generation") + scale_y_discrete(limits=rev) +
+  scale_x_discrete(labels=Legend)
+  ```
+ 
+ 
+ 
+ 
   ### Grid arrange
   
   
