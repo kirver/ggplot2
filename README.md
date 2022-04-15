@@ -219,9 +219,29 @@ This graph is kind of unwieldy af because the text is all over the place. Howeve
 3. Is there a statistically significant association between HP and speed for all Pokemon in generation 4? 
 4. What are a few types of geoms? What are the ways of using them to show information? 
 
-`
-`
-`
-`
-`
-`
+## Histograms
+
+Okay, enough time with the scatterplots and continuous variables! Boo! Now we are going to play around with a histogram geom. One guide for these geoms can be found [here](http://www.sthda.com/english/wiki/ggplot2-histogram-plot-quick-start-guide-r-software-and-data-visualization). 
+
+A histogram is a _counter_. It counts how many of something can be found given a dataset. For example, let's say we want to see the distribution of _means_ for Hit Points in a pokemon. As before, we load in the dataset. The aesthetic set up is a little bit different: instead of assigning an X and Y, we only establish an X, since we are only looking at one variable and then counting it (hence, the Y will inherently by the count). Let's plug this in as a default:
+
+```
+p <- read.csv("pokemon.csv")
+ggplot(p,
+       aes(x=HP)) + geom_histogram()```
+       
+      [pp13]
+      
+### To Test Your Knowledge
+
+Run the following code:
+
+```ggplot(p,
+       aes(x=HP)) + geom_histogram(binwidth=2,
+                                   fill="blue",
+                                   color="green")```
+
+1. What do you think changing the binwidth does?
+2. What do you think changing fill does?
+3. What does changing the color do? 
+4. What is (approximately) the most common Pokemon speed? 
