@@ -111,4 +111,36 @@ Another way we can manipulate the graph is by changing the _size_ of each point.
 
 Are you ready for one more variable?! A fifth one!?!? Let's change the shape of each data point. Keep in mind that shape is a discrete trait, so it can only function with discrete variables. 
 
+`ggplot(p) + aes(Attack, Defense, color=HP,
+                size=Speed,
+                shape=Legendary) + geom_point()`
+
 [pp8]
+
+This is getting _hella_ noisy. Let's take a breath and focus on one thing we can do to change the 'broad' overall aesthetic of a graph: changing the theme! 
+
+## Cambiando el Tema
+
+[Themes](https://ggplot2.tidyverse.org/reference/ggtheme.html) area fun way of changing all the non-data display. Just, like, the vibe, tu sabes. 
+
+One thing we will do to make looking at this a little easier is to put our whole ggplot so far into an object titled `p1`, as so:
+
+``p1 <- ggplot(p) + aes(Attack, Defense, color=HP,
+                size=Speed,
+                shape=Legendary) + geom_point()`
+                
+Now, running `p1` should give you the previous graph. But it is also easier to make quick manipulations now that we have the 'core'. Let's run through a few of the themes to see how they can make sudden and aesthetically pleasing changes to the graph style. You can add a theme (overriding the defaults) by adding the theme function with a '+' at the end of the script, e.g.
+
+`p1 + theme_bw()`
+
+[pp9]
+
+Notice a change? 
+
+Now, try out a few of these themes and see what is prettiest for you:
+
+`p1 + theme_light()
+p1 + theme_dark()
+p1 + theme_minimal()
+p1 + theme_void()
+p1 + theme_classic()`
