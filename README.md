@@ -58,7 +58,8 @@ Let's start by loading in a ggplot item.
 
 You might see, well, nothing!
 
-[[[pp1]]]
+![Pikachu](Pikachu.png)
+![pp1](img/pp1.pdf)
 
 The `ggplot()` function establishes that a plot needs to be made. It 'initializes' a ggplot option, and declares the input data frame. But, so far there are no aesthetics mapped on to it. The data is 'there' but is not seen. 
 
