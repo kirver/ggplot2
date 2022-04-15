@@ -5,7 +5,7 @@ The workshop assumes _some_ knowledge of R (e.g. setting working directories, lo
 
 Please see the accompanying powerpoint for more details!
 
-We begin with a .csv file and create several manipulations in order to learn the basic functions of ggplot2 using a Pokemon-based dataset. 
+We begin with a .csv file and create several manipulations in order to learn the basic functions of ggplot2 using a Pokemon-based dataset. This is not meant to be comprehensive re: learning ggplot but, in conjunction with the Powerpoint, is meant to establish a basic ggplot2 intuition that can be coupled with hardcore Stack Exchange + Google + furious coffee coding sessions to make the most beautiful graphs you can! 
 
 ---
 
@@ -233,6 +233,8 @@ A histogram is a _counter_. It counts how many of something can be found given a
        
       [[pp13]
       
+      [[[[Add in something about layered histograms???]]]
+      
       
 ### To Test Your Knowledge
 
@@ -244,3 +246,42 @@ Run the following code:
 2. What do you think changing fill does?
 3. What does changing the color do? 
 4. What is (approximately) the most common Pokemon speed? 
+
+
+## The Boxplot-Step
+
+Boxplots are a way of examining the quantitative means between categorical variables. A great guide to using boxplots can be found [here](http://www.sthda.com/english/wiki/ggplot2-box-plot-quick-start-guide-r-software-and-data-visualization). Let's go nuts for a second and see how the HP of legendaries compares to those of non-legendaries:
+
+`ggplot(p,
+       aes(x=Legendary,
+           y=HP)) + geom_boxplot()`
+           
+   PP14
+   
+   I mean, obviously, right? They're legendaries, you would expect the mean to be a bit higher. 
+   
+   Let's say you want to compare the mean Speeds of Pokemon from different generations. Try it now. Do you run into any issues?
+   
+   Well, yeah, of course. The problem is that, when dealing with a numerical variable, like, generation 1, the computer doesn't know that this is actually _categorical_. We're nerds and know that generations are distinct entities, and that Gen 1 Pokemon are from Kanto while the second is Johto and so on and so forth... anyways. To address this, we can convert the numerical variables into categorical ones with the as.factor() function, like so:
+   
+   `ggplot(p,
+       aes(x=as.factor(Generation),
+           y=Speed)) + geom_boxplot()`
+           
+  Let's run the following:
+  
+  `ggplot(p,
+       aes(x=as.factor(Generation),
+           y=Defense,
+           color=as.factor(Generation),
+           fill="orange")) + geom_boxplot()`
+           
+ Based on the above,  what do you think color= function does in the boxplot context? What about fill?       
+ 
+ Add fill=Legendary. What happens? What does this data tell you about how consistently Pokemon legendaries are stronger than non-Legendaries across generations? 
+  
+  
+  ### Labeling the Plots: axes, titles, etc; 
+  ### Grid arrange
+  
+  
