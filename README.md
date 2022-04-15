@@ -58,7 +58,7 @@ Let's start by loading in a ggplot item.
 
 You might see, well, nothing!
 
-![pp1](https://github.com/kirver/ggplot2/blob/main/img/pp1.png)
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp1.png)
 
 The `ggplot()` function establishes that a plot needs to be made. It 'initializes' a ggplot option, and declares the input data frame. But, so far there are no aesthetics mapped on to it. The data is 'there' but is not seen. 
 
@@ -76,7 +76,7 @@ In our case, let's think of two items we want to map onto a scatter plot. Let's 
 
 What do you see now?
 
-[[pp2]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp2.png)
 
 Probably nothing that interesting... yet. But there's a key difference between this image and the other one. The first image shows an empty plot. But this one indicates an _axis_, which shows the X axis Attack, and the Y is Defense. The scales have been automatically set to be within the bounds of the data - these can be manipulated later on downstream. The specific data set to be mapped has been loaded in. However, we do not yet see any data points! This is because the _geom_ has not been indicated yet. 
 
@@ -86,19 +86,19 @@ So, we will _add_ the geom point aesthetic to these points by running the follow
 
 `ggplot(p) + aes(Attack, Defense) + geom_point()`
 
-[pp3]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp3.png)
 
 So far we have representations of two variables: Attack, and Defense. What if we wanted to add in a third variable? We can choose to represent a third variable by changing the _color_ of each point. We do this by manipulating the `aes()` function further and specifying the 'color' variable, as so:
 
 `ggplot(p) + aes(Attack, Defense, color=HP) + geom_point()`
 
-[pp4]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp4.png)
 
 Keep in mind that this is assigning a quantitative variable color to each point, so you will see a quantitative color scale. However, you can also do the same with discrete variables, such as Type.1:
 
 `ggplot(p) + aes(Attack, Defense, color=Type.1) + geom_point()`
 
-[[pp6]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp6.png)
 
 So far we have three different variables represented: Attack, Defense, and Type.1. Dope! What if we want to go DEEPER and add another one? A fourth variable?
 
@@ -107,7 +107,7 @@ Another way we can manipulate the graph is by changing the _size_ of each point.
 `ggplot(p) + aes(Attack, Defense, color=HP,
                 size=Speed) + geom_point()`
                 
-[pp7]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp7.png)
 
 Are you ready for one more variable?! A fifth one!?!? Let's change the shape of each data point. Keep in mind that shape is a discrete trait, so it can only function with discrete variables. 
 
@@ -115,7 +115,7 @@ Are you ready for one more variable?! A fifth one!?!? Let's change the shape of 
                 size=Speed,
                 shape=Legendary) + geom_point()`
 
-[pp8]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp8.png)
 
 This is getting _hella_ noisy. Let's take a breath and focus on one thing we can do to change the 'broad' overall aesthetic of a graph: changing the theme! 
 
@@ -133,7 +133,7 @@ Now, running `p1` should give you the previous graph. But it is also easier to m
 
 `p1 + theme_bw()`
 
-[pp9]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp9.png)
 
 Notice a change? 
 
@@ -166,7 +166,7 @@ Take a look at the graph. Do you expect a line to fit through these data?
 `ggplot(p) + aes(Attack, Defense) +
   geom_point(color="darkgreen")`
   
-  [pp10]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp10.png)
   
   We then run the `lm()` function, which [fits linear models](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm) to the data points specified, e.g. `lm(X ~ Y, data = data)`. You can then view summary statistics for the model.
   
