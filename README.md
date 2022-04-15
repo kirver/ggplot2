@@ -206,10 +206,11 @@ This graph is kind of unwieldy af because the text is all over the place. Howeve
 `lgd2 +   geom_text(label = lgd1$Name,
                    check_overlap=TRUE,
                    size=2)`
-                   
- [pp12]
+
  
  Now try the same with geom_label(). What is the major difference between these? 
+ 
+ [[pp12]
  
  ### To Test Your Knowledge
  
