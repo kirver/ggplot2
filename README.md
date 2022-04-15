@@ -72,4 +72,10 @@ What do you see now?
 
 [[pp2]
 
-Probably nothing that interesting... yet. But there's a key difference between this image and the other one. The first image shows an empty plot. But this one indicates an _axis_, which shows the X axis Attack, and the Y is Defense. The scales have been automatically set to be within the bounds of the data - these can be manipulated later on downstream. 
+Probably nothing that interesting... yet. But there's a key difference between this image and the other one. The first image shows an empty plot. But this one indicates an _axis_, which shows the X axis Attack, and the Y is Defense. The scales have been automatically set to be within the bounds of the data - these can be manipulated later on downstream. The specific data set to be mapped has been loaded in. However, we do not yet see any data points! This is because the _geom_ has not been indicated yet. 
+
+How do we represent the data? Since we are interested in making a scatterplot, we will use `geom_point()` (more info on usage [here](https://ggplot2.tidyverse.org/reference/geom_point.html). Each dataset is represented by a _ point_. Keep in mind there are other types of geoms, as we described. There is `geom_boxplot()`, `geom_histogram()`, etc;. A point is merely one type of geom. And this is the one we are starting with!
+
+So, we will _add_ the geom point aesthetic to these points by running the following code:
+
+`ggplot(p) + aes(Attack, Defense) + geom_point()`
