@@ -9,7 +9,7 @@ We begin with a .csv file and create several manipulations in order to learn the
 
 ---
 
-## Beginning!
+## Let's start! 
 
 ```
 #Set the working directory to wherever your file is located, 
@@ -58,7 +58,7 @@ Let's start by loading in a ggplot item.
 
 You might see, well, nothing!
 
-![pp1](ggplot2/img/pp1.pdf)
+![pp1](https://github.com/kirver/ggplot2/blob/main/img/pp1.pdf)
 
 The `ggplot()` function establishes that a plot needs to be made. It 'initializes' a ggplot option, and declares the input data frame. But, so far there are no aesthetics mapped on to it. The data is 'there' but is not seen. 
 
@@ -181,3 +181,5 @@ NOW! If you want to add that model, that _layer_, to the graph, you add on anoth
   geom_point(color="darkgreen") + geom_smooth(methods='lm')`
   
   More information about the `geom_smooth()` function can be found [here](https://ggplot2.tidyverse.org/reference/geom_smooth.html). 
+  
+  
