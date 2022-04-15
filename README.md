@@ -7,7 +7,7 @@ Please see the accompanying powerpoint for more details!
 
 ---
 
-We will be walking through the R code here!
+#Beginning!
 
 ```
 #Set the working directory to wherever your file is located, 
@@ -41,3 +41,11 @@ ggplot2 was made following the Grammar of Graphics, a textbook by Leland Wilkins
 
 
 Take a look at the `p` dataset by Ctrl+Enter on the given line. You should see columns such as **Name, Type.1, Total, HP, Attack**, etc;. Each row corresponds to a given Pokemon 'species'. 
+
+If you want to look at specifics for a given column, you can add a `$` after the object. For example, typing in `p$Type.1` will show you all the Type 1 (all Pokemon have a 'type' that summarizes their physical properties) rows. If you want to see those which are unique, you could write in `unique(p$Type.1)`. 
+
+Now, it is time to start making an actual ggplot! 
+
+---
+
+
