@@ -19,6 +19,8 @@ setwd(C:/Path/to/file)
 library("tidyverse")
 library("ggplot2")
 library("gridExtra")
+library("RColorBrewer")
+library("viridis")
 ```
 
 Now, we will load in the Pokemon dataset. This dataset was taken from [The Complete Pokemon Dataset](https://www.kaggle.com/datasets/rounakbanik/pokemon), which contains information on all 802 Pokemon from 7 Generations. _Neeeeerddd._ The datset is titled ![Pokemon.csv](https://github.com/kirver/ggplot2/blob/main/pokemon.csv) and can also be downloaded from the GitHub. 
@@ -443,6 +445,8 @@ Nice! More interesting manipulations of the axes can be found [here](http://www.
 
 ## Colores, by J Balvin
 
+### Color Scales, Discrete and Continuous
+
 Choosing aesthetically pleasing colors is important. In the enlightened age of accessibility, it's important that our color palettes be not only aesthetically pleasing, but also color-blind accessible. About 8% of men and 1/200 women are [colorblind](https://en.wikipedia.org/wiki/Color_blindness). About 99% of CB folks have red/green colorblindness. Some tips on making color-blind friendly palettes can be found [here](https://www.tableau.com/about/blog/examining-data-viz-rules-dont-use-red-green-together), and, plus, Dr. Stepfanie Aguillon will be discussing how to make CB-friendly plots in her following workshop. I will be discussing _how_ to manipulate colors in ggplot2, coding-wise.
 
 We will be using the R package `RColorBrewer`. RColorBrewer is an R packages that uses the work from [http://colorbrewer2.org/](http://colorbrewer2.org/) to help you choose sensible colour schemes for figures in R. It includes several different [color schemes](http://applied-r.com/rcolorbrewer-palettes/), which can also be customized. It _also_ has specifically CB-friendly palettes that can be integrated into the code. 
@@ -452,27 +456,34 @@ Another package we will use is `viridis`. viridis is a [CB-friendly color packag
 
 Run the following:
 
-```
-library(RColorBrewer)
-n <- 15
-colrs <- brewer.pal.info[brewer.pal.info$colorblind == TRUE, ]
-col_vec = unlist(mapply(brewer.pal, colrs$maxcolors, rownames(colrs)))
-col <- sample(col_vec, n)
-area <- rep(1,n)
-pie(area, col = col)
-#We won't dissect this whole code, but it could be a fun exercise!
-```
-[[pp25]]
+`display.brewer.all()`
 
-This shows an example of a CB-friendly color wheel with 15 colors! You can play around with it by manipulating how many colors pop up, for example. Some of the functions being utilized, e.g. `brewer.pal.info()`, are specific to this package. 
+[[pp28]]
+
+You can also see which palettes are CB-friendly by running the following:
+
+`display.brewer.all(colorblindFriendly = T)`
 
 The way the color packages works is the same way you manipulate most ggplots. You _add_ it on, using the `+` modifier. 
 
 So, you set a scale, and then _add_ it on top of the ggplot. For example, let's consider the following CB-disastrous graph we made earlier:
 
-[[pp26]]
+[[pp29]]
 
-We can change the color scheme by creating a `scale_color_*` or `scale_fill_*` object. In `viridis`, we could make `scale_colour_viridis()` object. A guide can be found [here](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) and also [here](https://cran.r-project.org/web/packages/viridis/viridis.pdf). 
+We can change the color scheme by creating a `scale_color_*` or `scale_fill_*` object. We know from the above code that 'Set2' is a CB-friendly palette. We are working with _discrete_ color scales (since we are looking at discrete Types). **Note**: If we were using quantitative data (for example, assigning color to speed instead of type), we would use the `scale_color_continuous()` function.
+
+So, in order to use the RColorBrewer palette on this graph,  we use the `scale_color_brewer()` function, and assign it a palette, as so:
+
+```
+ggplot(p) + aes(Attack, Defense,
+                color=Type.1) + geom_point() +
+  scale_color_brewer(palette="Set2")
+```
+[[pp30]
+
+One limitation you might observe here is that there are simply not enough colors. For that I prefer the `viridis` package, which I think is a little more powerful, esp. re: CB-friendliness. 
+
+In `viridis`, we make `scale_colour_viridis()` object. A guide can be found [here](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) and also [here](https://cran.r-project.org/web/packages/viridis/viridis.pdf). 
 
 For example, let's run the following code. Carefully consider what each piece is doing! 
 
@@ -499,7 +510,44 @@ vir_color <- scale_colour_viridis(
   #https://cran.r-project.org/web/packages/viridis/viridis.pdf
   ```
   
-  This makes a color scale that we are naming `vir_color` using the `viridis` package. 
+  This makes a color scale that we are naming `vir_color` using the `viridis` package. We will modify the original graph we showed you above, except this time, we are _adding_ the CB-friendly, viridis-made palette. See a difference? 
+
+`ggplot(p) + aes(Attack, Defense,
+                color=Type.1) + geom_point() + vir_color`
+                
+ 
+[[[pp27]]]
+
+
+There are of course lots of ways to manipulate color. Here are a few graphs I encourage you to run, and manipulate each line of code to see what's up!
+
+```
+ggplot(p) + aes(Attack, Defense,
+                color=as.factor(Generation)) + geom_point() +
+  scale_color_brewer(palette="Set2")
+
+
+ggplot(p) + aes(Attack, Defense,
+                color=Speed) + geom_point() +
+  scale_colour_viridis(option="magma")
+
+
+ggplot(p) + aes(Attack, Defense,
+                color=Speed) + geom_point() +
+  scale_colour_gradient(
+    low="blue",
+    high="orange"#Gators Chomp Chomp
+  )
+
+ggplot(p) + aes(Attack, Defense,
+                color=Speed,
+                size=HP) + geom_point() +
+  scale_colour_gradient(
+    low="blue",
+    high="orange"#Gators Chomp Chomp
+  )
+```
+
 
  
  ## Plot Arrangement 
