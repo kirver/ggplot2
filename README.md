@@ -23,7 +23,7 @@ library("RColorBrewer")
 library("viridis")
 ```
 
-Now, we will load in the Pokemon dataset. This dataset was taken from [The Complete Pokemon Dataset](https://www.kaggle.com/datasets/rounakbanik/pokemon), which contains information on all 802 Pokemon from 7 Generations. _Neeeeerddd._ The datset is titled ![Pokemon.csv](https://github.com/kirver/ggplot2/blob/main/pokemon.csv) and can also be downloaded from the GitHub. 
+Now, we will load in the Pokemon dataset. This dataset was taken from [The Complete Pokemon Dataset](https://www.kaggle.com/datasets/rounakbanik/pokemon), which contains information on all 802 Pokemon from 7 Generations. _Neeeeerddd._ The datset is titled [Pokemon.csv](https://github.com/kirver/ggplot2/blob/main/pokemon.csv) and can also be downloaded from the GitHub. 
 
 For those who are young and/or had friends growing up, Pokemon is a Japanese media franchise based on "pocket monsters" that you can train, befriend, coexist with. There are a lot of them, and there is a *passionate* culture centered around them. 
 
@@ -68,7 +68,7 @@ What you need to do is load in the _aesthetics_, which is called by `aes()`. And
 
 ## All Aes() on Me
 
-The way `aes()` works is by **describing how data variables are mapped to the visual properties, or aesthetics, or _aes_ of the _geoms_** (the geoms, remember, are the 0, 1 or 2 dimensional graphic representations of the data point!). It is used in the following way: `aes(x, y, ...)`. The official `aes()` documentation can be found ![here](https://ggplot2.tidyverse.org/reference/aes.html#:~:text=Aesthetic%20mappings%20describe%20how%20variables,()%20and%20in%20individual%20layers).
+The way `aes()` works is by **describing how data variables are mapped to the visual properties, or aesthetics, or _aes_ of the _geoms_** (the geoms, remember, are the 0, 1 or 2 dimensional graphic representations of the data point!). It is used in the following way: `aes(x, y, ...)`. The official `aes()` documentation can be found [here](https://ggplot2.tidyverse.org/reference/aes.html#:~:text=Aesthetic%20mappings%20describe%20how%20variables,()%20and%20in%20individual%20layers).
 
 There are _lots_ of ways to call aes(). Several can be read about [here](https://bookdown.org/yih_huynh/Guide-to-R-Book/basic-aesthetics.html). We are going to run through a few of the most common iterations via using a scatterplot example. 
 
@@ -557,6 +557,7 @@ The above discussed manipulations of pre-existing color scales and assigning the
 I took my weird ass, looked at every Gen 1 Pokemon and assigned it an overall 'color'. For example, I took Lapras (example below) and labeled it as 'Blue'. This data is in [pokemon_colors.csv](https://github.com/kirver/ggplot2/blob/main/pokemon_colors.csv). 
 
 ![Lapras](https://archives.bulbagarden.net/media/upload/thumb/a/ab/131Lapras.png/250px-131Lapras.png)
+
 _A Blue Pokemon._
  
  Read it in and check it out!
