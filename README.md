@@ -116,7 +116,7 @@ ggplot(p) + aes(Attack, Defense) +
              alpha=0.5)
 ```
 
-## Adding Another Variables
+## Adding More Variables
 
 So far we have representations of two variables: Attack, and Defense. What if we wanted to add in a third variable? One option is by represent a third variable by changing the _color_ of each point. We do this by manipulating the `aes()` function further and specifying the 'color' variable, as so:
 
@@ -161,9 +161,11 @@ This is getting _hella_ noisy. Let's take a breath and focus on one thing we can
 
 One thing we will do to make looking at this a little easier is to put our whole ggplot so far into an object titled `p1`, as so:
 
-``p1 <- ggplot(p) + aes(Attack, Defense, color=HP,
+```
+p1 <- ggplot(p) + aes(Attack, Defense, color=HP,
                 size=Speed,
-                shape=Legendary) + geom_point()`
+                shape=Legendary) + geom_point()
+```
                 
 Now, running `p1` should give you the previous graph. But it is also easier to make quick manipulations now that we have the 'core'. Let's run through a few of the themes to see how they can make sudden and aesthetically pleasing changes to the graph style. You can add a theme (overriding the defaults) by adding the theme function with a '+' at the end of the script, e.g.
 
