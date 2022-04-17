@@ -333,6 +333,12 @@ ggplot(p, aes(x=Legendary, y=as.factor(Generation))) + geom_count() + theme_bw()
   scale_x_discrete(labels=Legend)
   ```
  
+ Now, we see this!
+ 
+ ![pp](https://github.com/kirver/ggplot2/blob/main/img/pp18.png)
+ 
+ Better, huh?
+ 
  Now let's say we want to arrange these plots nicely, like, for science. To this end we can use the `gridExtra()` package, which we loaded in right at the very beginning. More info on it can be found [here](https://cran.r-project.org/web/packages/egg/vignettes/Ecosystem.html). I like it since it's a little more intuitive than the base R grid function. 
  
  First, we will make a few plots and give them each a name. Take a second to figure out what each plot is doing! 
