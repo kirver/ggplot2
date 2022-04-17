@@ -3,7 +3,7 @@ Repo to accompany the R ggplot2 workshop from Jasper Ridge data management &amp;
 
 The workshop assumes _some_ knowledge of R (e.g. setting working directories, loading libraries, etc;), but we can work on it together if not! 
 
-Please see the accompanying ![powerpoint](https://github.com/kirver/ggplot2/blob/main/POKEMON%20GGPLOT2.pptx) for more details!
+Please see the accompanying [powerpoint](https://github.com/kirver/ggplot2/blob/main/POKEMON%20GGPLOT2.pptx) for more details!
 
 We begin with a .csv file and, using ggplot2, execute several manipulations in order to learn the basic functions of ggplot2 using a Pokemon-based dataset. This is not meant to be comprehensive re: learning ggplot but, in conjunction with the Powerpoint, is meant to establish a basic ggplot2 intuition that can be coupled with hardcore Stack Exchange + Google + furious coffee coding sessions to make the most beautiful graphs you can! 
 
@@ -458,7 +458,7 @@ Run the following:
 
 `display.brewer.all()`
 
-[[pp28]]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp28.png)
 
 You can also see which palettes are CB-friendly by running the following:
 
@@ -468,7 +468,7 @@ The way the color packages works is the same way you manipulate most ggplots. Yo
 
 So, you set a scale, and then _add_ it on top of the ggplot. For example, let's consider the following CB-disastrous graph we made earlier:
 
-[[pp29]]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp29.png)
 
 We can change the color scheme by creating a `scale_color_*` or `scale_fill_*` object. We know from the above code that 'Set2' is a CB-friendly palette. We are working with _discrete_ color scales (since we are looking at discrete Types). **Note**: If we were using quantitative data (for example, assigning color to speed instead of type), we would use the `scale_color_continuous()` function.
 
@@ -479,7 +479,7 @@ ggplot(p) + aes(Attack, Defense,
                 color=Type.1) + geom_point() +
   scale_color_brewer(palette="Set2")
 ```
-[[pp30]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp30.png)
 
 One limitation you might observe here is that there are simply not enough colors. For that I prefer the `viridis` package, which I think is a little more powerful, esp. re: CB-friendliness. 
 
@@ -516,7 +516,7 @@ vir_color <- scale_colour_viridis(
                 color=Type.1) + geom_point() + vir_color`
                 
  
-[[[pp27]]]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp27.png)
 
 
 There are of course lots of ways to manipulate color. Here are a few graphs I encourage you to run, and manipulate each line of code to see what's up!
@@ -556,7 +556,7 @@ The above discussed manipulations of pre-existing color scales and assigning the
 
 I took my weird ass, looked at every Gen 1 Pokemon and assigned it an overall 'color'. For example, I took Lapras (example below) and labeled it as 'Blue'. This data is in [pokemon_colors.csv](https://github.com/kirver/ggplot2/blob/main/pokemon_colors.csv). 
 
-[Lapras](https://archives.bulbagarden.net/media/upload/thumb/a/ab/131Lapras.png/250px-131Lapras.png)
+![Lapras](https://archives.bulbagarden.net/media/upload/thumb/a/ab/131Lapras.png/250px-131Lapras.png)
 _A Blue Pokemon._
  
  Read it in and check it out!
@@ -608,7 +608,7 @@ his
 
 ```
 
-[[[pp31]]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp31.png)
 
 Cool, huh? :) This would also qualify as CB-friendly, since the colors are ornamental - they are not necessary, and the data can be interpeted without them.
 
