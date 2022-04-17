@@ -238,7 +238,7 @@ A histogram is a _counter_. It counts how many of something can be found given a
       
 ### To Test Your Knowledge
 
-Run the following code:
+Run & play around with the following code:
 
 `ggplot(p, aes(x=HP)) + geom_histogram(binwidth=2, fill="blue", color="green")`
 
@@ -280,7 +280,7 @@ Boxplots are a way of examining the quantitative means between categorical varia
  
  Add `fill=Legendary`. What happens? What does this data tell you about how consistently Pokemon legendaries are stronger than non-Legendaries across generations? What are some examples of how this type of plot could be useful? 
   
-  [[pp15]]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp15.png)
   
  
   
@@ -292,8 +292,7 @@ Boxplots are a way of examining the quantitative means between categorical varia
   
   `ggplot(p, aes(x=Legendary, y=as.factor(Generation))) + geom_count()`
   
-  [[pp16]
-  
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp16.png)
 
   
   ## Plot Arrangement
