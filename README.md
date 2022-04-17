@@ -345,10 +345,11 @@ Boxplots are a way of examining the quantitative means between categorical varia
            y=Defense,
            color=as.factor(Generation),
            fill="orange")) + geom_boxplot()`
-           
- Based on the above,  what do you think `color= function` does in the boxplot context? What about fill?       
  
- Add `fill=Legendary`. What happens? What does this data tell you about how consistently Pokemon legendaries are stronger than non-Legendaries across generations? What are some examples of how this type of plot could be useful? 
+ ### To Test Your Knowledge
+1. Based on the above,  what do you think `color= function` does in the boxplot context? What about fill?       
+ 
+ 2. Add `fill=Legendary`. What happens? What does this data tell you about how consistently Pokemon legendaries are stronger than non-Legendaries across generations? What are some examples of how this type of plot could be useful? 
   
 ![pp](https://github.com/kirver/ggplot2/blob/main/img/pp15.png)
   
@@ -606,7 +607,7 @@ his <-ggplot(count.df,
   geom_bar(stat="identity",
                                         width=0.5,
                                         fill=uq,
-                                        color="black") + col
+                                        color="black") + colors_type
 
 his
 
