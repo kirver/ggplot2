@@ -209,9 +209,11 @@ Take a look at the graph. Do you expect a line to fit through these data?
   We then run the `lm()` function, which [fits linear models](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm) to the data points specified, e.g. `lm(X ~ Y, data = data)`. You can then view summary statistics for the model.
   
   So...
-  
-  `model <- lm(Attack ~ Defense, data = p)`
-`summary(model)`
+
+```
+  model <- lm(Attack ~ Defense, data = p)
+summary(model)
+```
 
 NOW! If you want to add that model, that _layer_, to the graph, you add on another geom. The linear model is part of the geom called [geom_smooth()](https://ggplot2.tidyverse.org/reference/geom_smooth.html). Its usage is like so:
 
