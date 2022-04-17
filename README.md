@@ -101,7 +101,8 @@ ggplot(p) + aes(Attack, Defense) +
   geom_point(shape=23)
   ```
 
-[[pp19]
+
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp19.png)
 
 There are other manipulations you can make to each point. Try manipulating the code below to see what each function changes:
 
@@ -292,7 +293,8 @@ contando_legendarios <- ggplot(p,
 contando_legendarios
 ```
 
-[[[pp20]]]
+
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp20.png)
 
 5. How is the new variable, `Legendary`, reflected in the histogram? 
 
@@ -308,8 +310,7 @@ contando_legendarios
 ```
 
 6. What's the main difference between this graph and the one above?
-7. 
-8. Look at the new graph. Do you still see the variable 'Legendary' reflected in this graph? What does this say about preference & overriding of defaults in ggplot2? That is to say: which is given more priority: the defaults (initially assigned with `aes()` or the `geom`?
+7. Look at the new graph. Do you still see the variable 'Legendary' reflected in this graph? What does this say about preference & overriding of defaults in ggplot2? That is to say: which is given more priority: the defaults (initially assigned with `aes()` or the `geom`?
 
 
 ## The Boxplot-Step
@@ -415,7 +416,8 @@ ggplot(p, aes(x=Legendary, y=as.factor(Generation))) + geom_count() + theme_bw()
 p3
 ```
 
-[[[pp21]]]
+
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp21.png)
 
 Let's say I want to change the axes. Above, we made modifications using the `scale_x_discrete()` (or the `y` equivalent) function. There is a different function for quantitative data. It is, you guessed it, `scale_y_continuous()` (or the `x` equivalent). 
 
@@ -433,7 +435,8 @@ p3 <- ggplot(p) + aes(Attack, Defense,
 p3
 ```
 
-[[pp22]]
+
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp22.png)
 
 Nice! More interesting manipulations of the axes can be found [here](http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels). 
  
@@ -496,18 +499,17 @@ For example, let's say we want to show the three graphs in a way where there are
 
 `grid.arrange(p1, p2, p3, p4, p5, nrow=2,
              ncol=3)`
-             
-             
-
+       
 
 Sometimes it can look very weird in the RStudio plot guide.
 
-[[pp23]
+
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp23.png)
 
 Sometimes you need to manipulate the boundaries of the Plot window in order to get what you want. Dr. Juarez knows more about this. I just make my screen wider and mess aorund with the settings until there is no text overlap, all images are crisp, etc;. Sometimes this may necessitate going into the actual plot and adjusting point, text size, etc; accordingly:
 
-[[pp24]]
 
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp24.png)
 
 
 
