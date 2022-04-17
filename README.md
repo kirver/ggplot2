@@ -671,7 +671,7 @@ Now, each crazy ass plot is relatively different. We have five plots. We want to
 
 `grid.arrange(plot1, plot2, ...,
 nrow= no_rows,
-ncol=ncols`
+ncol=ncols)`
 
 For example, let's say we want to show the three graphs in a way where there are two rows and three columns. We would plot the following:
 
