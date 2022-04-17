@@ -686,6 +686,8 @@ Sometimes you need to manipulate the boundaries of the Plot window in order to g
 ![pp](https://github.com/kirver/ggplot2/blob/main/img/pp24.png)
 
 
+## Ta Luego
 
+That's all for now! If you benefited from this guide, or have recommendations for its improvement, please feel free to send me an email at **kiv@berkeley.edu** or message me on Twitter **@kirvers**! I'm hoping to keep this up as long as people find it useful, and hope that it may make learning ggplot2 somewhat easier for newcomers by starting from the basics and incorporating the unique Grammar of Graphics, ggplot2 syntax into its pedagogy.
 
-  
+Thanks for reading! 
