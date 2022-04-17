@@ -548,6 +548,69 @@ ggplot(p) + aes(Attack, Defense,
   )
 ```
 
+I encourage you to check out the links above to see how you can add more color manipulations!
+
+### Manual Color Scales
+
+The above discussed manipulations of pre-existing color scales and assigning them to graphs. Now I'm going to discuss how to manually set color scales for discrete objects. 
+
+I took my weird ass, looked at every Gen 1 Pokemon and assigned it an overall 'color'. For example, I took Lapras (example below) and labeled it as 'Blue'. This data is in [pokemon_colors.csv](https://github.com/kirver/ggplot2/blob/main/pokemon_colors.csv). 
+
+[Lapras](https://archives.bulbagarden.net/media/upload/thumb/a/ab/131Lapras.png/250px-131Lapras.png)
+_A Blue Pokemon._
+ 
+ Read it in and check it out!
+ 
+ ```
+ p <- read.csv("pokemon_colors.csv")
+ p
+ p$Color
+ unique(p$Color)
+ ```
+ 
+ The way we assign colors to each one is by using the function `scale_color_manual()`. So, run the below:
+ ```
+ colors_type <- scale_colour_manual(values=c(
+  "Green" = "green",
+  "Orange" = "orange",
+  "Blue" = "blue",
+  "Purple" = "purple",
+  "Yellow" = "yellow",
+  "Brown" = "brown",
+  "Pink" = "pink",
+  "Red" = "red",
+  "White" = "white",
+  "Gray" = "gray"),
+  name="Color")
+colors_type
+```
+ 
+ Let's say I want to make a histogram of how many Pokemon are of each color. I would run the following:
+ 
+ ```
+ p <- read.csv("pokemon_colors.csv")
+ uq <- sort(unique(p$Color))
+uq
+count <- table(p$Color)
+count #makes a table with the counts for each with table() function
+#details here: https://www.datasciencemadesimple.com/table-function-in-r/
+count.df <- data.frame(uq, count)
+count.df #arranges them into a data frame
+
+his <-ggplot(count.df,
+             aes(x=uq, y=Freq)) + 
+  geom_bar(stat="identity",
+                                        width=0.5,
+                                        fill=uq,
+                                        color="black") + col
+
+his
+
+```
+
+[[[pp31]]
+
+Cool, huh? :) This would also qualify as CB-friendly, since the colors are ornamental - they are not necessary, and the data can be interpeted without them.
 
  
  ## Plot Arrangement 
