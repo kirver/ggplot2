@@ -314,7 +314,7 @@ Let's try the following:
  xlab("Legendary?") +
  ylab("Generation")
 ```
- [[[pp17]]]
+![pp](https://github.com/kirver/ggplot2/blob/main/img/pp17.png)
  
  However, there are still a few things I don't love about this graph. First, the fact that generations are in descending order. Then, the fact that legendary Pokemon are only indicated with FALSE or TRUE. Kind of ugly. 
  
