@@ -3,9 +3,9 @@ Repo to accompany the R ggplot2 workshop from Jasper Ridge data management &amp;
 
 The workshop assumes _some_ knowledge of R (e.g. setting working directories, loading libraries, etc;), but we can work on it together if not! 
 
-Please see the accompanying powerpoint for more details!
+Please see the accompanying ![powerpoint](https://github.com/kirver/ggplot2/blob/main/POKEMON%20GGPLOT2.pptx) for more details!
 
-We begin with a .csv file and create several manipulations in order to learn the basic functions of ggplot2 using a Pokemon-based dataset. This is not meant to be comprehensive re: learning ggplot but, in conjunction with the Powerpoint, is meant to establish a basic ggplot2 intuition that can be coupled with hardcore Stack Exchange + Google + furious coffee coding sessions to make the most beautiful graphs you can! 
+We begin with a .csv file and, using ggplot2, execute several manipulations in order to learn the basic functions of ggplot2 using a Pokemon-based dataset. This is not meant to be comprehensive re: learning ggplot but, in conjunction with the Powerpoint, is meant to establish a basic ggplot2 intuition that can be coupled with hardcore Stack Exchange + Google + furious coffee coding sessions to make the most beautiful graphs you can! 
 
 ---
 
@@ -21,7 +21,7 @@ library("ggplot2")
 library("gridExtra")
 ```
 
-Now, we will load in the Pokemon dataset. This dataset was taken from [The Complete Pokemon Dataset](https://www.kaggle.com/datasets/rounakbanik/pokemon), which contains information on all 802 Pokemon from 7 Generations. _Neeeeerddd._ The datset is titled **Pokemon.csv** and can also be downloaded from the GitHub. 
+Now, we will load in the Pokemon dataset. This dataset was taken from [The Complete Pokemon Dataset](https://www.kaggle.com/datasets/rounakbanik/pokemon), which contains information on all 802 Pokemon from 7 Generations. _Neeeeerddd._ The datset is titled ![Pokemon.csv](https://github.com/kirver/ggplot2/blob/main/pokemon.csv) and can also be downloaded from the GitHub. 
 
 For those who are young and/or had friends growing up, Pokemon is a Japanese media franchise based on "pocket monsters" that you can train, befriend, coexist with. There are a lot of them, and there is a *passionate* culture centered around them. 
 
@@ -42,7 +42,7 @@ Note: let's say you wanted to use all generations _except_ generation 5. Then, w
 ggplot2 was made following the Grammar of Graphics, a textbook by Leland Wilkinson. A grammar of graphics is a framework which follows a layered approach to describe & construct visualizations or graphics in a structured manner. Hadley Wickham et al wrote [a book](https://ggplot2-book.org/) describing their incorporation of the Grammar of Graphics into the ggplot2 package. 
 
 
-Take a look at the `p` dataset by Ctrl+Enter on the given line. You should see columns such as **Name, Type.1, Total, HP, Attack**, etc;. Each row corresponds to a given Pokemon 'species'. 
+Take a look at the `p` dataset by Ctrl+Enter on the given line. You should see columns such as `Name, Type.1, Total, HP, Attack`, etc;. Each row corresponds to a given Pokemon 'species'. 
 
 If you want to look at specifics for a given column, you can add a `$` after the object. For example, typing in `p$Type.1` will show you all the Type 1 (all Pokemon have a 'type' that summarizes their physical properties) rows. If you want to see those which are unique, you could write in `unique(p$Type.1)`. 
 
@@ -66,11 +66,11 @@ What you need to do is load in the _aesthetics_, which is called by `aes()`. And
 
 ## All Aes() on Me
 
-The way `aes()` works is by describing how data variables are mapped to the visual properties, or aesthetics, of the geoms (the geoms, remember, are the 0, 1 or 2 dimensional graphic representations of the data point!). It is used in the following way: `aes(x, y, ...)`. 
+The way `aes()` works is by **describing how data variables are mapped to the visual properties, or aesthetics, or _aes_ of the _geoms_** (the geoms, remember, are the 0, 1 or 2 dimensional graphic representations of the data point!). It is used in the following way: `aes(x, y, ...)`. The official `aes()` documentation can be found ![here](https://ggplot2.tidyverse.org/reference/aes.html#:~:text=Aesthetic%20mappings%20describe%20how%20variables,()%20and%20in%20individual%20layers).
 
 There are _lots_ of ways to call aes(). Several can be read about [here](https://bookdown.org/yih_huynh/Guide-to-R-Book/basic-aesthetics.html). We are going to run through a few of the most common iterations via using a scatterplot example. 
 
-In our case, let's think of two items we want to map onto a scatter plot. Let's say, mmm, Attack and Defense. The we run the following:
+In our case, let's think of two items we want to map onto a scatter plot. Let's say, mmm, `Attack` and `Defense`. The we run the following:
 
 `ggplot(p, aes(Attack, Defense))`
 
@@ -78,9 +78,9 @@ What do you see now?
 
 ![pp](https://github.com/kirver/ggplot2/blob/main/img/pp2.png)
 
-Probably nothing that interesting... yet. But there's a key difference between this image and the other one. The first image shows an empty plot. But this one indicates an _axis_, which shows the X axis Attack, and the Y is Defense. The scales have been automatically set to be within the bounds of the data - these can be manipulated later on downstream. The specific data set to be mapped has been loaded in. However, we do not yet see any data points! This is because the _geom_ has not been indicated yet. 
+Probably nothing that interesting... yet. But there's a key difference between this image and the other one. The first image shows an empty plot. But this one indicates an _axis_, which shows the X axis Attack, and the Y is Defense. The scales have been automatically set to be within the bounds of the data - these can be manipulated later on downstream. The specific data set to be mapped has been loaded in. However, we do not yet see any data points! This is because the _geom_ has not been indicated yet. As I mention in the slide, a **geom** is a _geometric object_, which is the **visual representation of the observation**. A geom can be a point, text, lines, etc;. A geom is _how you choose to represent the data_, which can be multiple different ways. Another link on some uses can be found [here](http://sape.inf.usi.ch/quick-reference/ggplot2/geom#:~:text=Geometric%20objects%20(geoms)%20are%20the,of%20(subsets%20of)%20observations.). 
 
-How do we represent the data? Since we are interested in making a scatterplot, we will use `geom_point()` (more info on usage [here](https://ggplot2.tidyverse.org/reference/geom_point.html). Each dataset is represented by a _ point_. Keep in mind there are other types of geoms, as we described. There is `geom_boxplot()`, `geom_histogram()`, etc;. A point is merely one type of geom. And this is the one we are starting with!
+How do we represent the data? Since we are interested in making a scatterplot, we will use `geom_point()` (more info on usage [here](https://ggplot2.tidyverse.org/reference/geom_point.html). Each dataset is represented by a _ point_. Keep in mind there are other types of geoms, as we described. There is `geom_boxplot()`, `geom_histogram()`, etc;. A point is merely one type of geom. I **know** I'm repeating myself, but this is something I have never seen emphasized in learning this program. 
 
 So, we will _add_ the geom point aesthetic to these points by running the following code:
 
@@ -88,11 +88,41 @@ So, we will _add_ the geom point aesthetic to these points by running the follow
 
 ![pp](https://github.com/kirver/ggplot2/blob/main/img/pp3.png)
 
-So far we have representations of two variables: Attack, and Defense. What if we wanted to add in a third variable? We can choose to represent a third variable by changing the _color_ of each point. We do this by manipulating the `aes()` function further and specifying the 'color' variable, as so:
+Dope, right?! 
+
+Within the syntax above, the `geom_point()` function can be manipulated. A link to some of the manipulation types can be found [here](http://www.sthda.com/english/wiki/ggplot2-point-shapes). For example, let's say I'm not super into dots. You can change the shape to look like any of these (among others):
+
+![shapes](http://www.sthda.com/sthda/RDoc/images/points-symbols.png)
+
+To reflect this change in the code, we make the following manipulation:
+
+```
+ggplot(p) + aes(Attack, Defense) +
+  geom_point(shape=23)
+  ```
+
+[[pp19]
+
+There are other manipulations you can make to each point. Try manipulating the code below to see what each function changes:
+
+```
+ggplot(p) + aes(Attack, Defense) +
+  geom_point(shape=23,
+             fill="forestgreen",
+             size=3,
+             color="yellow",
+             alpha=0.5)
+```
+
+## Adding Another Variables
+
+So far we have representations of two variables: Attack, and Defense. What if we wanted to add in a third variable? One option is by represent a third variable by changing the _color_ of each point. We do this by manipulating the `aes()` function further and specifying the 'color' variable, as so:
 
 `ggplot(p) + aes(Attack, Defense, color=HP) + geom_point()`
 
 ![pp](https://github.com/kirver/ggplot2/blob/main/img/pp4.png)
+
+Note that this is different than the color manipulations we did above. In the above image, we were changing the default of these geoms. Now, we are changing the `aes()` so it is reading in another variable, and this variable is changing the _color_ such that the color is represented by a specific variable. The previous `geom_point()` change was _global_. This `aes()` change is specific to the _variable_. Got it?
 
 Keep in mind that this is assigning a quantitative variable color to each point, so you will see a quantitative color scale. However, you can also do the same with discrete variables, such as Type.1:
 
