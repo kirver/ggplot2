@@ -237,7 +237,7 @@ Now, the ggplot object `lgd2` contains legendary Pokemon with Attack, Defense, a
 
 `lgd2 +  geom_text(label = lgd1$Name)`
                            
-This graph is kind of unwieldy af because the text is all over the place. However, we can make a few modifications to make it more manageable: 1) we use the check_overlap function, which will keep text from overlapping. Then, we can change the size of the text:
+This graph is kind of unwieldy af because the text is all over the place. However, we can make a few modifications to make it more manageable: 1) we use the `check_overlap` function, which will keep text from overlapping. Then, we can 2) change the size of the text:
 
 `lgd2 +   geom_text(label = lgd1$Name,
                    check_overlap=TRUE,
@@ -443,25 +443,29 @@ Nice! More interesting manipulations of the axes can be found [here](http://www.
  
  First, we will make a few plots and give them each a name. Take a second to figure out what each plot is doing! 
  
+ 
  ```
- Legend <- c("Non-Legendary", "Legendary")
+Legend <- c("Non-Legendary", "Legendary")
 p1 <- ggplot(p, aes(x=Legendary, y=as.factor(Generation))) + geom_count() + theme_bw() + 
-  ggtitle("Counts of Legendaries per Generation") + 
   xlab("Legendary?") +
   ylab("Generation") + scale_y_discrete(limits=rev) +
   scale_x_discrete(labels=Legend)
-  
+p1
+
 p2 <- ggplot(p,
-       aes(x=Speed)) + geom_histogram(binwidth=5,
-                                      fill="blue",
-                                      color="green")
-                                      
- p3 <- ggplot(p) + aes(Attack, Defense,
+             aes(x=Speed,
+                 color=Legendary)) + geom_histogram(binwidth=5,
+                                            fill="black")
+p2
+
+p3 <- ggplot(p) + aes(Attack, Defense,
                       color=Type.1,
                       shape=Type.2,
                       size=HP) +  theme_bw() +
-  geom_point() 
-  
+  geom_point(show.legend=FALSE) 
+
+p3
+
 p <- read.csv("pokemon.csv")
 ggplot(p) + aes(Attack, Defense) +
   geom_point(color="darkgreen")
@@ -472,23 +476,40 @@ p4 <- ggplot(p) + aes(Attack, Defense) +
 p4
 
 p5 <- ggplot(p,
-       aes(x=as.factor(Generation),
-           y=Defense,
-           color=as.factor(Generation),
-           fill=Legendary)) + geom_boxplot()
+             aes(x=as.factor(Generation),
+                 y=Defense,
+                 color=as.factor(Generation),
+                 fill=Legendary)) + geom_boxplot(show.legend=FALSE)
+p5
 
 ```
 
 Wow! This is some absolute CHAOS going on. Awesome. 
   
-Now, each crazy ass plot is relatively different. We have five plots. We want to arrange them using the `grid.arrange()` function. The syntax is:
+Now, each crazy ass plot is relatively different. We have five plots. We want to arrange them using the `grid.arrange()` function. The syntax is as such:
 
 `grid.arrange(plot1, plot2, ...,
 nrow= no_rows,
 ncol=ncols`
 
-For example, let's say we want to only 
- 
-  ### Grid arrange
-  
+For example, let's say we want to show the three graphs in a way where there are two rows and three columns. We would plot the following:
+
+`grid.arrange(p1, p2, p3, p4, p5, nrow=2,
+             ncol=3)`
+             
+             
+
+
+Sometimes it can look very weird in the RStudio plot guide.
+
+[[pp23]
+
+Sometimes you need to manipulate the boundaries of the Plot window in order to get what you want. Dr. Juarez knows more about this. I just make my screen wider and mess aorund with the settings until there is no text overlap, all images are crisp, etc;. Sometimes this may necessitate going into the actual plot and adjusting point, text size, etc; accordingly:
+
+[[pp24]]
+
+
+
+
+
   
