@@ -149,6 +149,10 @@ Are you ready for one more variable?! A fifth one!?!? Let's change the shape of 
 
 This is getting _hella_ noisy. Let's take a breath and focus on one thing we can do to change the 'broad' overall aesthetic of a graph: changing the theme! 
 
+### To Test Your Knowledge
+
+1. Previously, we changed the `alpha()` settings. How could you manipulate the code above to change the transparency based on a new variable? 
+
 ## Cambiando el Tema
 
 [Themes](https://ggplot2.tidyverse.org/reference/ggtheme.html) area fun way of changing all the non-data display. Just, like, the vibe, tu sabes. 
@@ -210,6 +214,8 @@ NOW! If you want to add that model, that _layer_, to the graph, you add on anoth
 `ggplot(p) + aes(Attack, Defense) +
   geom_point(color="darkgreen") + geom_smooth(methods='lm')`
   
+  ![pp](https://github.com/kirver/ggplot2/blob/main/img/pp11.png)
+  
   More information about the `geom_smooth()` function can be found [here](https://ggplot2.tidyverse.org/reference/geom_smooth.html). 
   
 ## Adding Text to Scatterplots
@@ -262,8 +268,7 @@ A histogram is a _counter_. It counts how many of something can be found given a
 
        
 ![pp](https://github.com/kirver/ggplot2/blob/main/img/pp13.png)
-      
-      [[[[Add in something about layered histograms???]]]
+
       
       
 ### To Test Your Knowledge
@@ -276,6 +281,35 @@ Run & play around with the following code:
 2. What do you think changing fill does?
 3. What does changing the color do? 
 4. What is (approximately) the most common Pokemon speed? 
+
+Now, run & play with this code:
+
+```
+contando_legendarios <- ggplot(p,
+             aes(x=Speed,
+                 color=Legendary)) + geom_histogram(binwidth=5,
+                                            fill="black")
+contando_legendarios
+```
+
+[[[pp20]]]
+
+5. How is the new variable, `Legendary`, reflected in the histogram? 
+
+Now run this code!
+
+```
+contando_legendarios <- ggplot(p,
+             aes(x=Speed,
+                 color=Legendary)) + geom_histogram(binwidth=5,
+                                            fill="black",
+                                            color="Blue")
+contando_legendarios
+```
+
+6. What's the main difference between this graph and the one above?
+7. 
+8. Look at the new graph. Do you still see the variable 'Legendary' reflected in this graph? What does this say about preference & overriding of defaults in ggplot2? That is to say: which is given more priority: the defaults (initially assigned with `aes()` or the `geom`?
 
 
 ## The Boxplot-Step
@@ -325,7 +359,7 @@ Boxplots are a way of examining the quantitative means between categorical varia
 ![pp](https://github.com/kirver/ggplot2/blob/main/img/pp16.png)
 
   
-  ## Plot Arrangement
+  ## Axes and Titles
   
   A critical part of making compelling graphs is the _presentation_. We've spent a lot of time discussing the _data_ we choose and the geoms we use to present them. 
 Now we will discuss the presentation.
@@ -352,7 +386,7 @@ Let's try the following:
  
  What if we want to change the ticks on the axis? For example, in our case, we want to change the presentation of each legendary label so it says "Non-Legendary", etc; instead of a Boolean value. 
  
- This is kind of annoying, but we need to create a list of the labels we want: `Legend <- c("Non-Legendary", "Legendary")`. Then, we add it as a discrete scale into the code using `scale_x_discrete()` function:
+ This can be kind of annoying (if you have LOTS of different variables, not a binary trait like Legendary or Not), but we need to create a list of the labels we want: `Legend <- c("Non-Legendary", "Legendary")`. Then, we add it as a discrete scale into the code using `scale_x_discrete()` function:
  
  ```
  Legend <- c("Non-Legendary", "Legendary")
@@ -368,6 +402,42 @@ ggplot(p, aes(x=Legendary, y=as.factor(Generation))) + geom_count() + theme_bw()
  ![pp](https://github.com/kirver/ggplot2/blob/main/img/pp18.png)
  
  Better, huh?
+ 
+ This is a specific sort of example with discrete data, so I will take a second to show you how you can manipulate axes with quantitative data, which you will probably use more frequently. 
+ 
+ Plug in this chaotic but beautiful graph:
+ 
+ ```
+ p3 <- ggplot(p) + aes(Attack, Defense,
+                color=Type.1,
+                shape=Type.2) +  theme_bw() +
+  geom_point() 
+p3
+```
+
+[[[pp21]]]
+
+Let's say I want to change the axes. Above, we made modifications using the `scale_x_discrete()` (or the `y` equivalent) function. There is a different function for quantitative data. It is, you guessed it, `scale_y_continuous()` (or the `x` equivalent). 
+
+It works by adding in a vector `c()` function into the `limits()` option. The vector contains the boundaries of each axis. We will look at an example shortly. 
+
+The current scale is approximately y = (0,250), and x= (0, 200). If we want to zoom out a little bit, let's run the following manipulation:
+
+```
+p3 <- ggplot(p) + aes(Attack, Defense,
+                color=Type.1,
+                shape=Type.2) +  theme_bw() +
+  geom_point() +
+  scale_x_continuous(limits=c(0,500)) + 
+  scale_y_continuous(limits=c(0,300))
+p3
+```
+
+[[pp22]]
+
+Nice! More interesting manipulations of the axes can be found [here](http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels). 
+ 
+ ## Plot Arrangement 
  
  Now let's say we want to arrange these plots nicely, like, for science. To this end we can use the `gridExtra()` package, which we loaded in right at the very beginning. More info on it can be found [here](https://cran.r-project.org/web/packages/egg/vignettes/Ecosystem.html). I like it since it's a little more intuitive than the base R grid function. 
  
