@@ -439,6 +439,68 @@ p3
 ![pp](https://github.com/kirver/ggplot2/blob/main/img/pp22.png)
 
 Nice! More interesting manipulations of the axes can be found [here](http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels). 
+
+
+## Colores, by J Balvin
+
+Choosing aesthetically pleasing colors is important. In the enlightened age of accessibility, it's important that our color palettes be not only aesthetically pleasing, but also color-blind accessible. About 8% of men and 1/200 women are [colorblind](https://en.wikipedia.org/wiki/Color_blindness). About 99% of CB folks have red/green colorblindness. Some tips on making color-blind friendly palettes can be found [here](https://www.tableau.com/about/blog/examining-data-viz-rules-dont-use-red-green-together), and, plus, Dr. Stepfanie Aguillon will be discussing how to make CB-friendly plots in her following workshop. I will be discussing _how_ to manipulate colors in ggplot2, coding-wise.
+
+We will be using the R package `RColorBrewer`. RColorBrewer is an R packages that uses the work from [http://colorbrewer2.org/](http://colorbrewer2.org/) to help you choose sensible colour schemes for figures in R. It includes several different [color schemes](http://applied-r.com/rcolorbrewer-palettes/), which can also be customized. It _also_ has specifically CB-friendly palettes that can be integrated into the code. 
+
+Another package we will use is `viridis`. viridis is a [CB-friendly color package for R](https://github.com/sjmgarnier/viridis). It provides a series of color maps designed to improve graph readability for readers with common forms of color blindness.
+
+
+Run the following:
+
+```
+library(RColorBrewer)
+n <- 15
+colrs <- brewer.pal.info[brewer.pal.info$colorblind == TRUE, ]
+col_vec = unlist(mapply(brewer.pal, colrs$maxcolors, rownames(colrs)))
+col <- sample(col_vec, n)
+area <- rep(1,n)
+pie(area, col = col)
+#We won't dissect this whole code, but it could be a fun exercise!
+```
+[[pp25]]
+
+This shows an example of a CB-friendly color wheel with 15 colors! You can play around with it by manipulating how many colors pop up, for example. Some of the functions being utilized, e.g. `brewer.pal.info()`, are specific to this package. 
+
+The way the color packages works is the same way you manipulate most ggplots. You _add_ it on, using the `+` modifier. 
+
+So, you set a scale, and then _add_ it on top of the ggplot. For example, let's consider the following CB-disastrous graph we made earlier:
+
+[[pp26]]
+
+We can change the color scheme by creating a `scale_color_*` or `scale_fill_*` object. In `viridis`, we could make `scale_colour_viridis()` object. A guide can be found [here](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) and also [here](https://cran.r-project.org/web/packages/viridis/viridis.pdf). 
+
+For example, let's run the following code. Carefully consider what each piece is doing! 
+
+```
+vir_color <- scale_colour_viridis(
+  alpha=1, 
+  begin=0, 
+  end=1, 
+  direction=1,
+  discrete=TRUE, 
+  option="E")
+  
+  #alpha changes transparency and is between [0,1]
+  #begin - where color map begins - see link below for more deets - usually 0
+  #end - where it ends - usually 1
+  #direction = order of colors in scale; 1 is default; if -1 order is reverse
+  #discrete = generates a DISCRETE palette; if false, generates continuous
+  #option - chooses a color map to use. there are 8 options from A to H
+  #A is "magma", B is "inferno", etc;
+  #See the maps here:
+  #https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html
+  
+  #Further info here
+  #https://cran.r-project.org/web/packages/viridis/viridis.pdf
+  ```
+  
+  This makes a color scale that we are naming `vir_color` using the `viridis` package. 
+
  
  ## Plot Arrangement 
  
