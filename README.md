@@ -7,6 +7,7 @@ The workshop assumes _some_ knowledge of R (e.g. setting working directories, lo
 
 Please see the accompanying [powerpoint](https://github.com/kirver/ggplot2/blob/main/POKEMON%20GGPLOT2.pptx) for more details.
 
+Fundado por: National Science Foundation, Jasper Ridge Biological Preserve, Stanford Latinx Postdocs, Stanford University Department of Biology
 
 ## Let's start! 
 
