@@ -5,7 +5,7 @@ We begin with a .csv file and, using ggplot2, execute several manipulations in o
 
 The workshop assumes _some_ knowledge of R (e.g. setting working directories, loading libraries, etc;), but we can work on it together if not! 
 
-Please see the accompanying [powerpoint](https://github.com/kirver/ggplot2/blob/main/POKEMON%20GGPLOT2.pptx) for more details.
+Please see the accompanying powerpoint for more details.
 
 Fundado por: National Science Foundation, Jasper Ridge Biological Preserve, Stanford Latinx Postdocs, Stanford University Department of Biology
 
