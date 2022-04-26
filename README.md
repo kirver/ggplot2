@@ -1,13 +1,12 @@
 # GGPLOT2 Workshop
-This GitHub repo is meant to accompany the R ggplot2 workshop from Jasper Ridge data management &amp; publishing series, organized by Dr. Bryan Juarez. This module is led by (future Dr.) Kirsten Isabel Verster.
+
+The purpose of this workshop is to become familiar with the R package ggplot2, a powerful package that enables users to use simple syntax in order to create elegant graphs.
 
 We begin with a .csv file and, using ggplot2, execute several manipulations in order to learn the basic functions of ggplot2 using a Pokemon-based dataset. This is not meant to be comprehensive re: learning ggplot but, in conjunction with the Powerpoint, is meant to establish a basic ggplot2 intuition that can be coupled with hardcore Stack Exchange + Google + furious coffee coding sessions to make the most beautiful graphs you can! 
 
 The workshop assumes _some_ knowledge of R (e.g. setting working directories, loading libraries, etc;), but we can work on it together if not! 
 
 Please see the accompanying powerpoint for more details.
-
-Fundado por: National Science Foundation, Jasper Ridge Biological Preserve, Stanford Latinx Postdocs, Stanford University Department of Biology
 
 ## Let's start! 
 
